@@ -1,5 +1,6 @@
 package com.example.supletorio_cobena;
 
+
 public class PaisModels {
     public static class DetallePaisResponse {
         public Results Results;
@@ -32,3 +33,5 @@ public class PaisModels {
         public double South;
     }
 }
+
+

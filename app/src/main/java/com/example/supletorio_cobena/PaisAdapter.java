@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class PaisAdapter extends RecyclerView.Adapter<PaisAdapter.PaisViewHolder> {
+
     private List<Pais> paises;
     private OnItemClickListener listener;
 
@@ -54,7 +55,6 @@ public class PaisAdapter extends RecyclerView.Adapter<PaisAdapter.PaisViewHolder
 
         void bind(final Pais pais, final OnItemClickListener listener) {
             nombreTextView.setText(pais.getNombre());
-
             Glide.with(banderaImageView.getContext())
                     .load("http://www.geognos.com/api/en/countries/flag/" + pais.getCodigoAlpha2() + ".png")
                     .into(banderaImageView);

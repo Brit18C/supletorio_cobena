@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private PaisAdapter paisAdapter;
 
@@ -40,24 +41,24 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<AllCountriesResponse> call, Response<AllCountriesResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Pais> paises = new ArrayList<>();
-
                     for (Map.Entry<String, InfoPais> entry : response.body().Results.entrySet()) {
                         Pais pais = new Pais(entry.getKey(), entry.getValue().getName());
                         paises.add(pais);
                     }
-
                     paisAdapter = new PaisAdapter(paises, pais -> {
                         Intent intent = new Intent(MainActivity.this, DetallePaisActivity.class);
                         intent.putExtra("codigoAlpha2", pais.getCodigoAlpha2());
                         startActivity(intent);
                     });
-
                     recyclerView.setAdapter(paisAdapter);
+                } else {
+
                 }
             }
 
             @Override
             public void onFailure(Call<AllCountriesResponse> call, Throwable t) {
+
             }
         });
     }
@@ -67,6 +68,7 @@ interface PaisApi {
     @GET("countries/info/all.json")
     Call<AllCountriesResponse> getPaises();
 }
+
 
 class InfoPais {
     private String Name;
